@@ -16,7 +16,10 @@ fromUrl : String -> Maybe String
 fromUrl urlString =
     let
         url =
-            Erl.parse urlString
+            if String.left 1 urlString == "/" then
+                Erl.parse ("http:/" ++ urlString)
+            else
+                Erl.parse urlString
     in
         if url.protocol == "https" || url.protocol == "http" then
             Just <|

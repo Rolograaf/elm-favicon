@@ -36,4 +36,8 @@ all =
             \() ->
                 Favicon.fromUrl "http://elm-lang.org/"
                     |> Expect.equal (Just "http://elm-lang.org/favicon.ico")
+        , test "URL with leading slash" <|
+            \() ->
+                Favicon.fromUrl "/elm-lang.org/"
+                    |> Expect.equal (Just "http://elm-lang.org/favicon.ico")
         ]
